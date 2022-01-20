@@ -12,6 +12,9 @@ final class Address implements AddressExtension, GeneratorAwareExtension
     use GeneratorAwareExtensionTrait;
 
     /** @var array|string[]  */
+    private $buildingNumber = ['%', '%#', '%##', '%###', '%-?', '%#-?', '%?', '%#?', '%-#', '%#-##'];
+
+    /** @var array|string[]  */
     private array $postcodes = [
         '2970', '3700', '7510', '9420', '8511', '3800', '9300', '9880', '3200', '8700', '8211', '2630', '4557',
         '4280', '3930', '5590', '5362', '4219', '6280', '9991', '8660', '1790', '9051', '5544', '4317', '5310',
@@ -29,18 +32,18 @@ final class Address implements AddressExtension, GeneratorAwareExtension
 
     /** @var array|string[]  */
     private array $streetAddressFormats = [
-        '{{streetName}} {{buildingNumber}}',
+        '{{Faker\Dutch\BE\Address->streetName}} {{Faker\Dutch\BE\Address->buildingNumber}}',
     ];
 
     /** @var array|string[]  */
-    private array $streetNameFormats = ['{{lastName}}{{streetSuffix}}'];
+    private array $streetNameFormats = ['{{Faker\Dutch\BE\Person->lastName}}{{Faker\Dutch\BE\Address->streetSuffix}}'];
 
     /** @var array|string[]  */
-    private array $cityFormats = ['{{cityName}}'];
+    private array $cityFormats = ['{{Faker\Dutch\BE\Address->cityName}}'];
 
     /** @var array|string[]  */
     private array $addressFormats = [
-        "{{streetAddress}}\n {{postcode}} {{city}}",
+        "{{Faker\Dutch\BE\Address->streetAddress}}\n{{Faker\Dutch\BE\Address->postcode}} {{Faker\Dutch\BE\Address->city}}",
     ];
 
     /** @var array|string[]  */
@@ -124,6 +127,4 @@ final class Address implements AddressExtension, GeneratorAwareExtension
 
         return $this->generator->parse($format);
     }
-
-
 }
