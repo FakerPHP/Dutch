@@ -11,7 +11,9 @@ final class PhoneNumber implements PhoneNumberExtension, GeneratorAwareExtension
 {
     use GeneratorAwareExtensionTrait;
 
-    /** @var array|string[] */
+    /**
+     * @var array|string[]
+     */
     private array $formats = [
         '+32(0)########',
         '+32(0)### ######',

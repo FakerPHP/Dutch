@@ -16,7 +16,9 @@ final class Person implements PersonExtension, GeneratorAwareExtension
 
     private string $femaleNameFormat = '{{Faker\Dutch\BE\Person->firstNameFemale}} {{Faker\Dutch\BE\Person->lastName}}';
 
-    /** @var array|string[] */
+    /**
+     * @var array|string[]
+     */
     private array $firstNamesMale = [
         'Aaron', 'Adam', 'Adrien', 'Alessio', 'Alexander', 'Alexandre', 'Alexis',
         'Antoine', 'Arne', 'Arthur', 'Axel', 'Ayoub', 'Baptiste', 'Benjamin',
@@ -33,7 +35,9 @@ final class Person implements PersonExtension, GeneratorAwareExtension
         'Vic', 'Victor', 'Vince', 'Warre', 'Xander', 'Yanis',
     ];
 
-    /** @var array|string[] */
+    /**
+     * @var array|string[]
+     */
     private array $firstNamesFemale = [
         'Alexia', 'Alice', 'Alicia', 'Alyssa', 'Amber', 'Amélie', 'Amy', 'Anaïs',
         'Anna', 'Anouk', 'Axelle', 'Aya', 'Bo', 'Camille', 'Célia', 'Charlotte',
@@ -49,7 +53,9 @@ final class Person implements PersonExtension, GeneratorAwareExtension
         'Siebe', 'Sofia', 'Tess', 'Victoria', 'Wout', 'Yana', 'Yasmine', 'Zoé', 'Zoë',
     ];
 
-    /** @var array|string[] */
+    /**
+     * @var array|string[]
+     */
     private array $lastNames = [
         'Adam', 'Aerts', 'Amrani', 'André', 'Antoine', 'Baert', 'Bah', 'Barry',
         'Bastin', 'Bauwens', 'Benali', 'Bernard', 'Bertrand', 'Bodart', 'Bogaert',
@@ -85,10 +91,14 @@ final class Person implements PersonExtension, GeneratorAwareExtension
         'Vervoort', 'Wauters', 'Willems', 'Wouters', 'Wuyts', 'Yildirim', 'Yilmaz',
     ];
 
-    /** @var array|string[] */
+    /**
+     * @var array|string[]
+     */
     private array $titlesMale = ['Mr.', 'Dr.', 'Prof.'];
 
-    /** @var array|string[] */
+    /**
+     * @var array|string[]
+     */
     private array $titlesFemale = ['Mrs.', 'Ms.', 'Miss', 'Dr.', 'Prof.'];
 
     public function name(?string $gender = null): string
@@ -99,8 +109,8 @@ final class Person implements PersonExtension, GeneratorAwareExtension
             $format = $this->generator->parse($this->femaleNameFormat);
         } else {
             $format = Helper::randomElement([
-                fn() => $this->maleNameFormat,
-                fn() => $this->femaleNameFormat,
+                fn () => $this->maleNameFormat,
+                fn () => $this->femaleNameFormat,
             ])();
         }
 
@@ -118,8 +128,8 @@ final class Person implements PersonExtension, GeneratorAwareExtension
         }
 
         return Helper::randomElement([
-            fn() => $this->firstNameMale(),
-            fn() => $this->firstNameFemale(),
+            fn () => $this->firstNameMale(),
+            fn () => $this->firstNameFemale(),
         ])();
     }
 
@@ -149,8 +159,8 @@ final class Person implements PersonExtension, GeneratorAwareExtension
         }
 
         return Helper::randomElement([
-            fn() => $this->titleMale(),
-            fn() => $this->titleFemale(),
+            fn () => $this->titleMale(),
+            fn () => $this->titleFemale(),
         ])();
     }
 
@@ -170,8 +180,10 @@ final class Person implements PersonExtension, GeneratorAwareExtension
      *  format 'ymd', followed by a number between 1 and 997, odd for
      *  males, even for females. The last part is used to check if it's
      *  a valid number.
+     *
      *  @see https://nl.wikipedia.org/wiki/Rijksregisternummer
 
+     *
      *  @todo Fix for DateTime provider
      */
     public function rrn($gender = null): int

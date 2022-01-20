@@ -11,24 +11,29 @@ class Company implements CompanyExtension, GeneratorAwareExtension
 {
     use GeneratorAwareExtensionTrait;
 
-    /** @var array|string[] */
+    /**
+     * @var array|string[]
+     */
     private array $formats = [
         '{{Faker\Dutch\BE\Person->lastName}} {{Faker\Dutch\BE\Company->companySuffix}}',
         '{{Faker\Dutch\BE\Person->lastName}}',
     ];
 
-    /** @var array|string[] */
+    /**
+     * @var array|string[]
+     */
     private array $companySuffixes = [
         'BVBA',
         'Comm.V', 'Comm.VA', 'CVOA', 'CVBA',
         'EBVBA', 'ESV',
         'NV',
         'VOF', 'VZW',
-        '& Zonen', '& Zn'
+        '& Zonen', '& Zn',
     ];
 
     /**
      * @see https://nl.wikipedia.org/wiki/Lijst_van_beroepen
+     *
      * @var array|string[]
      */
     private array $jobTitles = [

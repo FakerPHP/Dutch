@@ -13,6 +13,7 @@
         "fakerphp/faker": "dev-main"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.5",
         "phpunit/phpunit": "^9.5"
     },
     "autoload": {

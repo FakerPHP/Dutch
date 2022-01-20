@@ -42,6 +42,4 @@ class Country implements CountryExtension, GeneratorAwareExtension
     {
         return Helper::randomElement($this->country);
     }
-
-
 }

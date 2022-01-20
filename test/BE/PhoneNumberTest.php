@@ -11,7 +11,7 @@ final class PhoneNumberTest extends TestCase
 {
     private PhoneNumber $extension;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $faker = Factory::belgium();
         $faker->seed(1);
@@ -22,14 +22,14 @@ final class PhoneNumberTest extends TestCase
     public function testPhoneNumber(): void
     {
         $value = $this->extension->phoneNumber();
-        $this->assertEquals('+32(0)007 086397', $value);
+        self::assertEquals('+32(0)007 086397', $value);
     }
 
     public function testE164PhoneNumber(): void
     {
         $value = $this->extension->e164PhoneNumber();
-        $this->assertEquals('+32579439090', $value);
-        $this->assertEquals(12, strlen($value));
-        $this->assertEquals('+32', substr($value, 0, 3));
+        self::assertEquals('+32579439090', $value);
+        self::assertEquals(12, strlen($value));
+        self::assertEquals('+32', substr($value, 0, 3));
     }
 }

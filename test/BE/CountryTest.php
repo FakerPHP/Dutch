@@ -11,7 +11,7 @@ final class CountryTest extends TestCase
 {
     private Country $extension;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $faker = Factory::belgium();
         $faker->seed(1);
@@ -22,6 +22,6 @@ final class CountryTest extends TestCase
     public function testCountry(): void
     {
         $value = $this->extension->country();
-        $this->assertEquals('Namibië', $value);
+        self::assertEquals('Namibië', $value);
     }
 }

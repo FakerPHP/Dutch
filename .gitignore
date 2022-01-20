@@ -6,3 +6,4 @@
 /.idea
 /.vscode
 /.build
+/.php-cs-fixer.cache

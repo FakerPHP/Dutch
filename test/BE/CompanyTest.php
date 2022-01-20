@@ -11,7 +11,7 @@ final class CompanyTest extends TestCase
 {
     private Company $extension;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $faker = Factory::belgium();
         $faker->seed(1);
@@ -22,18 +22,18 @@ final class CompanyTest extends TestCase
     public function testCompany(): void
     {
         $value = $this->extension->company();
-        $this->assertEquals('Willems', $value);
+        self::assertEquals('Willems', $value);
     }
 
     public function testCompanySuffix(): void
     {
         $value = $this->extension->companySuffix();
-        $this->assertEquals('VZW', $value);
+        self::assertEquals('VZW', $value);
     }
 
     public function testJobTitle(): void
     {
         $value = $this->extension->jobTitle();
-        $this->assertEquals('Telexist', $value);
+        self::assertEquals('Telexist', $value);
     }
 }

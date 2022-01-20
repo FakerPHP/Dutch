@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Faker\Dutch;
 
-use Faker\Dutch\NL;
-use Faker\Dutch\BE;
+use Faker\Extension;
 use Faker\Extension\ContainerBuilder;
 use Faker\Generator;
-use Faker\Extension;
 
 class Factory
 {

@@ -11,10 +11,14 @@ final class Address implements AddressExtension, GeneratorAwareExtension
 {
     use GeneratorAwareExtensionTrait;
 
-    /** @var array|string[]  */
+    /**
+     * @var array|string[]
+     */
     private $buildingNumbers = ['%', '%#', '%##', '%###', '%-?', '%#-?', '%?', '%#?', '%-#', '%#-##'];
 
-    /** @var array|string[]  */
+    /**
+     * @var array|string[]
+     */
     private array $postcodes = [
         '2970', '3700', '7510', '9420', '8511', '3800', '9300', '9880', '3200', '8700', '8211', '2630', '4557',
         '4280', '3930', '5590', '5362', '4219', '6280', '9991', '8660', '1790', '9051', '5544', '4317', '5310',
@@ -30,23 +34,33 @@ final class Address implements AddressExtension, GeneratorAwareExtension
         '7331', '7870', '7604', '1401', '9520', '8531', '9150', '4052', '6980', '1320', '6594', '7532', '3960',
     ];
 
-    /** @var array|string[]  */
+    /**
+     * @var array|string[]
+     */
     private array $streetAddressFormats = [
         '{{Faker\Dutch\BE\Address->streetName}} {{Faker\Dutch\BE\Address->buildingNumber}}',
     ];
 
-    /** @var array|string[]  */
+    /**
+     * @var array|string[]
+     */
     private array $streetNameFormats = ['{{Faker\Dutch\BE\Person->lastName}}{{Faker\Dutch\BE\Address->streetSuffix}}'];
 
-    /** @var array|string[]  */
+    /**
+     * @var array|string[]
+     */
     private array $cityFormats = ['{{Faker\Dutch\BE\Address->cityName}}'];
 
-    /** @var array|string[]  */
+    /**
+     * @var array|string[]
+     */
     private array $addressFormats = [
         "{{Faker\Dutch\BE\Address->streetAddress}}\n{{Faker\Dutch\BE\Address->postcode}} {{Faker\Dutch\BE\Address->city}}",
     ];
 
-    /** @var array|string[]  */
+    /**
+     * @var array|string[]
+     */
     private array $streetSuffixes = [
         'baan', 'boulevard', 'dreef', 'hof', 'laan', 'pad', 'ring', 'singel', 'steeg', 'straat', 'weg',
     ];
@@ -76,7 +90,9 @@ final class Address implements AddressExtension, GeneratorAwareExtension
         'Zinnik', 'Zottegem', 'Zoutleeuw',
     ];
 
-    /** @var array|string[]  */
+    /**
+     * @var array|string[]
+     */
     private array $states = [
         'Antwerpen', 'Limburg', 'Oost-Vlaanderen', 'Vlaams-Brabant', 'West-Vlaanderen',
         'Henegouwen', 'Luik', 'Luxemburg', 'Namen', 'Waals-Brabant',

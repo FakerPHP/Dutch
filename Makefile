@@ -8,19 +8,11 @@ build: test static ## Runs test targets
 coverage: vendor/autoload.php ## Collects coverage with phpunit
 	vendor/bin/phpunit --coverage-text --coverage-clover=.build/logs/clover.xml
 
+cs: vendor ## Fixes coding standard issues with php-cs-fixer
+	vendor/bin/php-cs-fixer fix --diff --verbose
+
 test: vendor/autoload.php ## Runs tests with phpunit
 	vendor/bin/phpunit
 
-static: vendor/autoload.php ## Runs static analyzers
-	vendor/bin/phpstan analyze
-	vendor/bin/psalm
-
-baseline: vendor/autoload.php ## Generate baseline files
-	vendor/bin/phpstan analyze --generate-baseline
-	vendor/bin/psalm --update-baseline
-
 clean: ## Cleans up build and vendor files
 	rm -rf vendor composer.lock .build
-
-vendor/autoload.php:
-	composer update --no-interaction
