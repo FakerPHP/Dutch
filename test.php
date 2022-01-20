@@ -2,6 +2,7 @@
 
 use Faker\Dutch\Factory;
 use Faker\Extension\AddressExtension;
+use Faker\Extension\CompanyExtension;
 use Faker\Extension\CountryExtension;
 use Faker\Extension\PersonExtension;
 
@@ -28,6 +29,10 @@ echo $faker->ext(AddressExtension::class)->streetAddress() . PHP_EOL;
 echo $faker->ext(AddressExtension::class)->address() . PHP_EOL;
 echo $faker->ext(AddressExtension::class)->buildingNumber() . PHP_EOL;
 echo $faker->ext(AddressExtension::class)->postcode() . PHP_EOL;
+echo PHP_EOL;
+echo $faker->ext(CompanyExtension::class)->company() . PHP_EOL;
+echo $faker->ext(CompanyExtension::class)->companySuffix() . PHP_EOL;
+echo $faker->ext(CompanyExtension::class)->jobtitle() . PHP_EOL;
 echo PHP_EOL;
 echo $faker->ext(CountryExtension::class)->country() . PHP_EOL;
 echo PHP_EOL;
