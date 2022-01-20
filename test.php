@@ -5,6 +5,7 @@ use Faker\Extension\AddressExtension;
 use Faker\Extension\CompanyExtension;
 use Faker\Extension\CountryExtension;
 use Faker\Extension\PersonExtension;
+use Faker\Extension\PhoneNumberExtension;
 
 require_once 'vendor/autoload.php';
 
@@ -53,3 +54,7 @@ echo $faker->ext(PersonExtension::class)->titleFemale() . PHP_EOL;
 echo $faker->ext(PersonExtension::class)->rrn() . PHP_EOL;
 echo $faker->ext(PersonExtension::class)->rrn('male') . PHP_EOL;
 echo $faker->ext(PersonExtension::class)->rrn('female') . PHP_EOL;
+echo PHP_EOL;
+echo $faker->ext(PhoneNumberExtension::class)->phoneNumber() . PHP_EOL;
+echo $faker->ext(PhoneNumberExtension::class)->e164PhoneNumber() . PHP_EOL;
+echo PHP_EOL;

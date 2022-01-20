@@ -45,11 +45,13 @@ class Factory
         $builder->add(BE\Company::class, Extension\CompanyExtension::class);
         $builder->add(BE\Country::class, Extension\CountryExtension::class);
         $builder->add(BE\Person::class, Extension\PersonExtension::class);
+        $builder->add(BE\PhoneNumber::class, Extension\PhoneNumberExtension::class);
 
         $builder->add(BE\Address::class);
         $builder->add(BE\Company::class);
         $builder->add(BE\Country::class);
         $builder->add(BE\Person::class);
+        $builder->add(BE\PhoneNumber::class);
 
         return new Generator($builder->build());
     }
