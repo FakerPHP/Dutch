@@ -12,7 +12,7 @@ final class Address implements AddressExtension, GeneratorAwareExtension
     use GeneratorAwareExtensionTrait;
 
     /** @var array|string[]  */
-    private $buildingNumber = ['%', '%#', '%##', '%###', '%-?', '%#-?', '%?', '%#?', '%-#', '%#-##'];
+    private $buildingNumbers = ['%', '%#', '%##', '%###', '%-?', '%#-?', '%?', '%#?', '%-#', '%#-##'];
 
     /** @var array|string[]  */
     private array $postcodes = [
@@ -47,7 +47,7 @@ final class Address implements AddressExtension, GeneratorAwareExtension
     ];
 
     /** @var array|string[]  */
-    private array $streetSuffix = [
+    private array $streetSuffixes = [
         'baan', 'boulevard', 'dreef', 'hof', 'laan', 'pad', 'ring', 'singel', 'steeg', 'straat', 'weg',
     ];
 
@@ -77,24 +77,24 @@ final class Address implements AddressExtension, GeneratorAwareExtension
     ];
 
     /** @var array|string[]  */
-    private array $state = [
+    private array $states = [
         'Antwerpen', 'Limburg', 'Oost-Vlaanderen', 'Vlaams-Brabant', 'West-Vlaanderen',
         'Henegouwen', 'Luik', 'Luxemburg', 'Namen', 'Waals-Brabant',
     ];
 
     public function streetSuffix(): string
     {
-        return Helper::randomElement($this->streetSuffix);
+        return Helper::randomElement($this->streetSuffixes);
     }
 
     public function buildingNumber(): string
     {
-        return strtoupper(Helper::bothify($this->buildingNumber[array_rand($this->buildingNumber)]));
+        return strtoupper(Helper::bothify($this->buildingNumbers[array_rand($this->buildingNumbers)]));
     }
 
     public function state(): string
     {
-        return Helper::randomElement($this->state);
+        return Helper::randomElement($this->states);
     }
 
     public function city(): string
