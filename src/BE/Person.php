@@ -174,7 +174,7 @@ final class Person implements PersonExtension, GeneratorAwareExtension
 
      *  @todo Fix for DateTime provider
      */
-    public function rrn($gender = null): string
+    public function rrn($gender = null): int
     {
         $middle = $this->generator->numberBetween(1, 997);
 
@@ -192,6 +192,6 @@ final class Person implements PersonExtension, GeneratorAwareExtension
         $check = (int) ($help . $dob . $middle);
         $rest = sprintf('%02d', 97 - ($check % 97));
 
-        return $dob . $middle . $rest;
+        return (int) $dob . $middle . $rest;
     }
 }
