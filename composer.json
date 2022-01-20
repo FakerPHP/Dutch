@@ -1,0 +1,31 @@
+{
+    "name": "fakerphp/dutch",
+    "type": "library",
+    "description": "Dutch specific extensions for Faker",
+    "keywords": [
+        "faker",
+        "fixtures",
+        "data"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3 || ^8.0",
+        "fakerphp/faker": "dev-main"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Faker\\Dutch\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Faker\\Test\\Dutch\\": "test/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
