@@ -1,7 +1,7 @@
 # Faker - Dutch extensions
 
-[![Packagist Downloads](https://img.shields.io/packagist/dm/FakerPHP/Swedish)](https://packagist.org/packages/fakerphp/swedish)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/FakerPHP/Swedish/Continuous%20Integration/main)](https://github.com/FakerPHP/Swedish/actions)
+[![Packagist Downloads](https://img.shields.io/packagist/dm/FakerPHP/Dutch)](https://packagist.org/packages/fakerphp/dutch)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/FakerPHP/Dutch/Continuous%20Integration/main)](https://github.com/FakerPHP/Dutch/actions)
 
 Dutch specific extensions for Faker
 
