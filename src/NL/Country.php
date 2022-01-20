@@ -1,6 +1,6 @@
 <?php
 
-namespace Faker\Dutch;
+namespace Faker\Dutch\NL;
 
 use Faker\Extension\CountryExtension;
 use Faker\Extension\GeneratorAwareExtension;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Faker\Dutch;
+namespace Faker\Dutch\NL;
 
 use Faker\Extension\AddressExtension;
 use Faker\Extension\GeneratorAwareExtension;
@@ -51,14 +51,14 @@ class Address implements AddressExtension, GeneratorAwareExtension
         '9712LJ', '9742GT', '9745EH', '9751TA', '9751TS', '9752BK', '9752GE', '9801TA', '9901EH', '9991EG', '9999XK',
     ];
 
-    private $streetNameFormats = ['{{Faker\Dutch\Person->lastName}}{{Faker\Dutch\Address->streetSuffix}}'];
+    private $streetNameFormats = ['{{Faker\Dutch\NL\Person->lastName}}{{Faker\Dutch\NL\Address->streetSuffix}}'];
 
-    private $streetAddressFormats = ['{{Faker\Dutch\Address->streetName}} {{Faker\Dutch\Address->buildingNumber}}'];
+    private $streetAddressFormats = ['{{Faker\Dutch\NL\Address->streetName}} {{Faker\Dutch\NL\Address->buildingNumber}}'];
 
     private $cityFormats = ['{{cityName}}'];
 
     private $addressFormats = [
-        "{{Faker\Dutch\Address->streetAddress}}\n{{Faker\Dutch\Address->postcode}} {{Faker\Dutch\Address->city}}",
+        "{{Faker\Dutch\NL\Address->streetAddress}}\n{{Faker\Dutch\NL\Address->postcode}} {{Faker\Dutch\NL\Address->city}}",
     ];
 
     private $streetSuffix = [

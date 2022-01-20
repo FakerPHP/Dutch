@@ -7,7 +7,6 @@ require_once 'vendor/autoload.php';
 
 $faker = Factory::netherlands();
 
-echo $faker->streetName() . PHP_EOL;
 echo $faker->ext(AddressExtension::class)->city() . PHP_EOL;
 echo $faker->ext(AddressExtension::class)->streetName() . PHP_EOL;
 echo $faker->ext(AddressExtension::class)->streetAddress() . PHP_EOL;

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Faker\Dutch;
 
+use Faker\Dutch\NL\Address;
+use Faker\Dutch\NL\Country;
+use Faker\Dutch\NL\Person;
 use Faker\Extension\ContainerBuilder;
 use Faker\Generator;
 use Faker\Extension;
