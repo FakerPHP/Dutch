@@ -10,7 +10,7 @@ use Faker\Extension;
 
 class Factory
 {
-    public static function dutch(): Generator
+    public static function netherlands(): Generator
     {
         $builder = new ContainerBuilder();
 
@@ -21,9 +21,11 @@ class Factory
         // Add Dutch specific extensions to replace some default ones
         $builder->add(Address::class, Extension\AddressExtension::class);
         $builder->add(Country::class, Extension\CountryExtension::class);
+        $builder->add(Person::class, Extension\PersonExtension::class);
 
         $builder->add(Address::class);
         $builder->add(Country::class);
+        $builder->add(Person::class);
 
         return new Generator($builder->build());
     }

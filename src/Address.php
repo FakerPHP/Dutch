@@ -51,14 +51,14 @@ class Address implements AddressExtension, GeneratorAwareExtension
         '9712LJ', '9742GT', '9745EH', '9751TA', '9751TS', '9752BK', '9752GE', '9801TA', '9901EH', '9991EG', '9999XK',
     ];
 
-    private $streetNameFormats = ['{{lastName}}{{streetSuffix}}'];
+    private $streetNameFormats = ['{{Faker\Dutch\Person->lastName}}{{Faker\Dutch\Address->streetSuffix}}'];
 
-    private $streetAddressFormats = ['{{streetName}} {{buildingNumber}}'];
+    private $streetAddressFormats = ['{{Faker\Dutch\Address->streetName}} {{Faker\Dutch\Address->buildingNumber}}'];
 
     private $cityFormats = ['{{cityName}}'];
 
     private $addressFormats = [
-        "{{streetAddress}}\n{{postcode}} {{city}}",
+        "{{Faker\Dutch\Address->streetAddress}}\n{{Faker\Dutch\Address->postcode}} {{Faker\Dutch\Address->city}}",
     ];
 
     private $streetSuffix = [
@@ -101,6 +101,11 @@ class Address implements AddressExtension, GeneratorAwareExtension
     private $state = [
         'Drenthe', 'Gelderland', 'Groningen', 'Flevoland', 'Friesland', 'Noord-Brabant', 'Noord-Holland', 'Overijssel', 'Limburg', 'Utrecht', 'Zeeland', 'Zuid-Holland',
     ];
+
+    public function streetSuffix(): string
+    {
+        return Helper::randomElement($this->streetSuffix);
+    }
 
     public function buildingNumber(): string
     {

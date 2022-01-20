@@ -25,7 +25,7 @@ Use `Faker\Dutch\Factory::dutch()` to create and initialize a Faker generator wi
 require_once 'vendor/autoload.php';
 
 // use the factory to create a Faker\Generator instance
-$faker = Faker\Dutch\Factory::dutch();
+$faker = Faker\Dutch\Factory::netherlands();
 
 echo $faker->name();
 // 'Piet de Vries';
