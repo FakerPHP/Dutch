@@ -19,8 +19,8 @@ baseline: vendor/autoload.php ## Generate baseline files
 	vendor/bin/phpstan analyze --generate-baseline
 	vendor/bin/psalm --update-baseline
 
-clean: rm -rf vendor composer.lock .build  ## Cleans up build and vendor files
+clean: ## Cleans up build and vendor files
+	rm -rf vendor composer.lock .build
 
 vendor/autoload.php:
 	composer update --no-interaction
-	composer bin all install --no-interaction
