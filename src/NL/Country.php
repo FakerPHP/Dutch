@@ -7,11 +7,12 @@ use Faker\Extension\GeneratorAwareExtension;
 use Faker\Extension\GeneratorAwareExtensionTrait;
 use Faker\Extension\Helper;
 
-class Country implements CountryExtension, GeneratorAwareExtension
+final class Country implements CountryExtension, GeneratorAwareExtension
 {
     use GeneratorAwareExtensionTrait;
 
-    private $country = [
+    /** @var string[] */
+    private array $countryNames = [
         'Afghanistan', 'Albanië', 'Algerije', 'Amerikaans-Samoa', 'Andorra', 'Angola', 'Amerikaanse Virgineilanden', 'Anguilla', 'Antartica', 'Antigua en Barbuda', 'Argentinië', 'Armenië', 'Aruba', 'Australië', 'Azerbeidzjan',
         'Bahamas', 'Bahrein', 'Bangladesh', 'Barbados', 'België', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnië-Herzegovina', 'Botswana', 'Bouvet Eiland (Bouvetøya)', 'Brazilië', 'Britse Maagdeneilanden', 'Brunei Darussalam', 'Bulgarije', 'Burkina Faso', 'Burundi',
         'Cambodja', 'Canada', 'Centraal-Afrikaanse Republiek', 'Chili', 'China', 'Christmaseiland', 'Cocoseilanden', 'Colombia', 'Comoren', 'Congo', 'Cookeilanden', 'Costa Rica', 'Cuba', 'Cyprus',
@@ -40,8 +41,6 @@ class Country implements CountryExtension, GeneratorAwareExtension
 
     public function country(): string
     {
-        return Helper::randomElement($this->country);
+        return Helper::randomElement($this->countryNames);
     }
-
-
 }
