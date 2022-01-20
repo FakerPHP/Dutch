@@ -3,7 +3,7 @@
 [![Packagist Downloads](https://img.shields.io/packagist/dm/FakerPHP/Swedish)](https://packagist.org/packages/fakerphp/swedish)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/FakerPHP/Swedish/Continuous%20Integration/main)](https://github.com/FakerPHP/Swedish/actions)
 
-Swedish specific extensions for Faker
+Dutch specific extensions for Faker
 
 ## Getting Started
 
@@ -19,7 +19,7 @@ Full documentation can be found over on [fakerphp.github.io](https://fakerphp.gi
 
 ### Basic Usage
 
-Use `Faker\Dutch\Factory::dutch()` to create and initialize a Faker generator with Dutch extensions.
+Use `Faker\Dutch\Factory::netherlands()` or `Faker\Dutch\Factory::belgium()` to create and initialize a Faker generator with Dutch extensions.
 
 ```php
 require_once 'vendor/autoload.php';
