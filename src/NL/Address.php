@@ -7,13 +7,15 @@ use Faker\Extension\GeneratorAwareExtension;
 use Faker\Extension\GeneratorAwareExtensionTrait;
 use Faker\Extension\Helper;
 
-class Address implements AddressExtension, GeneratorAwareExtension
+final class Address implements AddressExtension, GeneratorAwareExtension
 {
     use GeneratorAwareExtensionTrait;
 
-    private $buildingNumber = ['%', '%#', '%##', '%###', '%-?', '%#-?', '%?', '%#?', '%-#', '%#-##'];
+    /** @var string[] */
+    private array $buildingNumberFormats = ['%', '%#', '%##', '%###', '%-?', '%#-?', '%?', '%#?', '%-#', '%#-##'];
 
-    private $postcodes = [
+    /** @var string[] */
+    private array $postcodes = [
         '1013PT', '1015GZ', '1053GS', '1058EG', '1060PM', '1068NE', '1072NL', '1073SK', '1074JA', '1078NH', '1111LW',
         '1121JC', '1141RP', '1141VM', '1161TC', '1183CH', '1187RK', '1188LP', '1271KZ', '1312SG', '1323CW', '1325EZ',
         '1333EJ', '1334DP', '1339VJ', '1351AC', '1352AC', '1354LM', '1356AC', '1391RX', '1406MZ', '1411JM', '1435GS',
@@ -51,17 +53,22 @@ class Address implements AddressExtension, GeneratorAwareExtension
         '9712LJ', '9742GT', '9745EH', '9751TA', '9751TS', '9752BK', '9752GE', '9801TA', '9901EH', '9991EG', '9999XK',
     ];
 
-    private $streetNameFormats = ['{{Faker\Dutch\NL\Person->lastName}}{{Faker\Dutch\NL\Address->streetSuffix}}'];
+    /** @var string[] */
+    private array $streetNameFormats = ['{{Faker\Dutch\NL\Person->lastName}}{{Faker\Dutch\NL\Address->streetSuffix}}'];
 
-    private $streetAddressFormats = ['{{Faker\Dutch\NL\Address->streetName}} {{Faker\Dutch\NL\Address->buildingNumber}}'];
+    /** @var string[] */
+    private array $streetAddressFormats = ['{{Faker\Dutch\NL\Address->streetName}} {{Faker\Dutch\NL\Address->buildingNumber}}'];
 
-    private $cityFormats = ['{{cityName}}'];
+    /** @var string[] */
+    private array $cityFormats = ['{{cityName}}'];
 
-    private $addressFormats = [
+    /** @var string[] */
+    private array $addressFormats = [
         "{{Faker\Dutch\NL\Address->streetAddress}}\n{{Faker\Dutch\NL\Address->postcode}} {{Faker\Dutch\NL\Address->city}}",
     ];
 
-    private $streetSuffix = [
+    /** @var string[] */
+    private array $streetSuffixes = [
         'baan', 'boulevard', 'dreef', 'hof', 'laan', 'pad', 'ring', 'singel', 'steeg', 'straat', 'weg',
     ];
 
@@ -69,9 +76,9 @@ class Address implements AddressExtension, GeneratorAwareExtension
      * Export of BAG (http://bag.vrom.nl/)
      * last updated 2012/11/09
      *
-     * @var array
+     * @var string[]
      */
-    private $cityNames = [
+    private array $cityNames = [
         "'s Gravenmoer", "'s-Graveland", "'s-Gravendeel", "'s-Gravenhage", "'s-Gravenpolder", "'s-Gravenzande", "'s-Heer Abtskerke", "'s-Heer Arendskerke", "'s-Heer Hendrikskinderen", "'s-Heerenberg", "'s-Heerenbroek", "'s-Heerenhoek", "'s-Hertogenbosch", "'t Goy", "'t Haantje", "'t Harde", "'t Loo Oldebroek", "'t Veld", "'t Waar", "'t Zand", "'t Zandt", '2e Valthermond',
         'Aadorp', 'Aagtekerke', 'Aalden', 'Aalsmeer', 'Aalsmeerderbrug', 'Aalst', 'Aalsum', 'Aalten', 'Aardenburg', 'Aarlanderveen', 'Aarle-Rixtel', 'Aartswoud', 'Abbega', 'Abbekerk', 'Abbenbroek', 'Abbenes', 'Abcoude', 'Achlum', 'Achterveld', 'Achterveld', 'Achthuizen', 'Achtmaal', 'Acquoy', 'Adorp', 'Aduard', 'Aerdenhout', 'Aerdt', 'Afferden L', 'Afferden', 'Agelo', 'Akersloot', 'Akkrum', 'Akmarijp', 'Albergen', 'Alblasserdam', 'Alde Leie', 'Aldeboarn', 'Aldtsjerk', 'Alem', 'Alkmaar', 'Allingawier', 'Almelo', 'Almen', 'Almere', 'Almkerk', 'Alphen aan den Rijn', 'Alphen', 'Alphen', 'Alteveer gem Hoogeveen', 'Alteveer', 'Alteveer', 'Alteveer', 'Altforst', 'Ambt Delden', 'Ameide', 'Amen', 'America', 'Amerongen', 'Amersfoort', 'Ammerstol', 'Ammerzoden', 'Amstelhoek', 'Amstelveen', 'Amstenrade', 'Amsterdam Zuidoost', 'Amsterdam', 'Andel', 'Andelst', 'Anderen', 'Andijk', 'Ane', 'Anerveen', 'Anevelde', 'Angeren', 'Angerlo', 'Anjum', 'Ankeveen', 'Anloo', 'Anna Paulowna', 'Annen', 'Annerveenschekanaal', 'Ansen', 'Ansen', 'Apeldoorn', 'Apeldoorn', 'Appelscha', 'Appeltern', 'Appingedam', 'Arcen', 'Arkel', 'Arnemuiden', 'Arnhem', 'Arum', 'Asch', 'Asperen', 'Assen', 'Assendelft', 'Asten', 'Augsbuurt', 'Augustinusga', 'Austerlitz', 'Avenhorn', 'Axel', 'Azewijn',
         'Baaiduinen', 'Baaium', 'Baak', 'Baambrugge', 'Baard', 'Baarland', 'Baarle-Nassau', 'Baarlo', 'Baarlo', 'Baarn', 'Baars', 'Babberich', 'Babyloniënbroek', 'Bad Nieuweschans', 'Badhoevedorp', 'Baexem', 'Baflo', 'Bakel', 'Bakhuizen', 'Bakkeveen', 'Balgoij', 'Balinge', 'Balk', 'Balkbrug', 'Balloo', 'Balloërveld', 'Ballum', 'Baneheide', 'Banholt', 'Bant', 'Bantega', 'Barchem', 'Barendrecht', 'Barger-Compascuum', 'Barneveld', 'Barsingerhorn', 'Basse', 'Batenburg', 'Bathmen', 'Bavel AC', 'Bavel', 'Bears', 'Bedum', 'Beegden', 'Beek en Donk', 'Beek', 'Beek', 'Beek', 'Beekbergen', 'Beemte Broekland', 'Beers NB', 'Beerta', 'Beerze', 'Beerzerveld', 'Beesd', 'Beesel', 'Beets', 'Beetsterzwaag', 'Beilen', 'Beinsdorp', 'Belfeld', 'Bellingwolde', 'Belt-Schutsloot', 'Beltrum', 'Bemelen', 'Bemmel', 'Beneden-Leeuwen', 'Bennebroek', 'Bennekom', 'Benneveld', 'Benningbroek', 'Benschop', 'Bentelo', 'Benthuizen', 'Bentveld', 'Berg en Dal', 'Berg en Dal', 'Berg en Terblijt', 'Bergambacht', 'Bergeijk', 'Bergen (NH)', 'Bergen L', 'Bergen aan Zee', 'Bergen op Zoom', 'Bergentheim', 'Bergharen', 'Berghem', 'Bergschenhoek', 'Beringe', 'Berkel en Rodenrijs', 'Berkel-Enschot', 'Berkenwoude', 'Berkhout', 'Berlicum', 'Berltsum', 'Bern', 'Best', 'Beugen', 'Beuningen Gld', 'Beuningen', 'Beusichem', 'Beutenaken', 'Beverwijk', 'Biddinghuizen', 'Bierum', 'Biervliet', 'Biervliet', 'Biest-Houtakker', 'Biezenmortel', 'Biggekerke', 'Bilthoven', 'Bingelrade', 'Bitgum', 'Bitgummole', 'Bladel', 'Blankenham', 'Blaricum', 'Blauwestad', 'Blauwhuis', 'Bleiswijk', 'Blesdijke', 'Bleskensgraaf ca', 'Blessum', 'Blije', 'Blijham', 'Blitterswijck', 'Bloemendaal', 'Blokker', 'Blokzijl', 'Boazum', 'Bocholtz', 'Bodegraven', 'Boekel', 'Boelenslaan', 'Boer', 'Boerakker', 'Boerakker', 'Boesingheliede', 'Boijl', 'Boksum', 'Bolsward', 'Bontebok', 'Boornbergum', 'Boornzwaag', 'Borculo', 'Borger', 'Borgercompagnie', 'Borgercompagnie', 'Borgsweer', 'Born', 'Borne', 'Bornerbroek', 'Bornwird', 'Borssele', 'Bosch en Duin', 'Boschoord', 'Boskoop', 'Bosschenhoofd', 'Botlek Rotterdam', 'Bourtange', 'Boven-Leeuwen', 'Bovenkarspel', 'Bovensmilde', 'Boxmeer', 'Boxtel', 'Braamt', 'Brakel', 'Brandwijk', 'Brantgum', 'Breda', 'Bredevoort', 'Breedenbroek', 'Breezand', 'Breezanddijk', 'Breskens', 'Breukelen', 'Breukeleveen', 'Brielle', 'Briltil', 'Britsum', 'Britswert', 'Broek in Waterland', 'Broek op Langedijk', 'Broek', 'Broekhuizen', 'Broekhuizen', 'Broekhuizenvorst', 'Broekland', 'Bronkhorst', 'Bronneger', 'Bronnegerveen', 'Brouwershaven', 'Bruchem', 'Brucht', 'Bruchterveld', 'Bruinehaar', 'Bruinisse', 'Brummen', 'Brunssum', 'Bruntinge', 'Buchten', 'Budel', 'Budel-Dorplein', 'Budel-Schoot', 'Buggenum', 'Buinen', 'Buinerveen', 'Buitenkaag', 'Buitenpost', 'Bunde', 'Bunne', 'Bunnik', 'Bunschoten-Spakenburg', 'Burdaard', 'Buren', 'Buren', 'Burgerbrug', 'Burgerveen', 'Burgh-Haamstede', 'Burgum', 'Burgwerd', 'Burum', 'Bussum', 'Buurmalsen', 'Buurmalsen',
@@ -98,23 +105,24 @@ class Address implements AddressExtension, GeneratorAwareExtension
         'Zaamslag', 'Zaandam', 'Zaandijk', 'Zalk', 'Zaltbommel', 'Zandberg', 'Zandeweer', 'Zandhuizen', 'Zandpol', 'Zandvoort', 'Zeddam', 'Zeegse', 'Zeeland', 'Zeerijp', 'Zeewolde', 'Zegge', 'Zegveld', 'Zeijen', 'Zeijerveen', 'Zeijerveld', 'Zeist', 'Zelhem', 'Zenderen', 'Zennewijnen', 'Zennewijnen', 'Zetten', 'Zevenaar', 'Zevenbergen', 'Zevenbergschen Hoek', 'Zevenbergschen Hoek', 'Zevenhoven', 'Zevenhuizen', 'Zevenhuizen', 'Zierikzee', 'Zieuwent', 'Zijderveld', 'Zijdewind', 'Zijldijk', 'Zoelen', 'Zoelmond', 'Zoetermeer', 'Zoeterwoude', 'Zonnemaire', 'Zorgvlied', 'Zoutelande', 'Zoutkamp', 'Zuid-Beijerland', 'Zuid-Scharwoude', 'Zuidbroek', 'Zuiddorpe', 'Zuidermeer', 'Zuiderwoude', 'Zuidhorn', 'Zuidlaarderveen', 'Zuidland', 'Zuidlaren', 'Zuidoostbeemster', 'Zuidschermer', 'Zuidveen', 'Zuidveld', 'Zuidvelde', 'Zuidwolde', 'Zuidwolde', 'Zuidzande', 'Zuilichem', 'Zuna', 'Zundert', 'Zurich', 'Zutphen', 'Zuurdijk', 'Zwaag', 'Zwaagdijk-Oost', 'Zwaagdijk-West', 'Zwaanshoek', 'Zwagerbosch', 'Zwammerdam', 'Zwanenburg', 'Zwartebroek', 'Zwartemeer', 'Zwartewaal', 'Zwartsluis', 'Zweeloo', 'Zweins', 'Zwiggelte', 'Zwijndrecht', 'Zwinderen', 'Zwolle', 'de Hoef', 'de Lutte', 'de Wijk', 'de Woude',
     ];
 
-    private $state = [
+    /** @var string[] */
+    private array $states = [
         'Drenthe', 'Gelderland', 'Groningen', 'Flevoland', 'Friesland', 'Noord-Brabant', 'Noord-Holland', 'Overijssel', 'Limburg', 'Utrecht', 'Zeeland', 'Zuid-Holland',
     ];
 
     public function streetSuffix(): string
     {
-        return Helper::randomElement($this->streetSuffix);
+        return Helper::randomElement($this->streetSuffixes);
     }
 
     public function buildingNumber(): string
     {
-        return strtoupper(Helper::bothify($this->buildingNumber[array_rand($this->buildingNumber)]));
+        return strtoupper(Helper::bothify($this->buildingNumberFormats[array_rand($this->buildingNumberFormats)]));
     }
 
     public function state(): string
     {
-        return Helper::randomElement($this->state);
+        return Helper::randomElement($this->states);
     }
 
     public function city(): string
@@ -147,6 +155,4 @@ class Address implements AddressExtension, GeneratorAwareExtension
 
         return $this->generator->parse($format);
     }
-
-
 }
