@@ -77,7 +77,7 @@ final class Company implements CompanyExtension, GeneratorAwareExtension
     public function company(): string
     {
         $name = Helper::randomElement([
-            fn () => sprintf('%s %s', Helper::randomElement($this->stores), $this->generator->lastName()),
+            fn () => sprintf('%s {{Faker\Dutch\NL\Person->lastName}}', Helper::randomElement($this->stores)),
             fn () => sprintf('%s%s', Helper::randomElement($this->products), strtolower(Helper::randomElement($this->types))),
             fn () => sprintf('%s %s', Helper::randomElement($this->products), Helper::randomElement($this->types)),
         ])();
@@ -86,7 +86,7 @@ final class Company implements CompanyExtension, GeneratorAwareExtension
             return sprintf('%s %s', $name, Helper::randomElement($this->companySuffixes));
         }
 
-        return $name;
+        return $this->generator->parse($name);
     }
 
     /**

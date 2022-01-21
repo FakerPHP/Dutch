@@ -2,11 +2,15 @@
 
 namespace Faker\Dutch\NL;
 
+use Faker\Extension\GeneratorAwareExtension;
+use Faker\Extension\GeneratorAwareExtensionTrait;
 use Faker\Extension\Helper;
 use Faker\Extension\PhoneNumberExtension;
 
-class PhoneNumber implements PhoneNumberExtension
+class PhoneNumber implements PhoneNumberExtension, GeneratorAwareExtension
 {
+    use GeneratorAwareExtensionTrait;
+
     /**
      * @var string[]
      */

@@ -13,21 +13,21 @@ final class Person implements PersonExtension, GeneratorAwareExtension
     use GeneratorAwareExtensionTrait;
 
     private array $maleNameFormats = [
-        '{{firstNameMale}} {{lastName}}',
-        '{{firstNameMale}} {{lastName}}',
-        '{{firstNameMale}} {{lastName}}',
-        '{{title}} {{firstNameMale}} {{lastName}}',
-        '{{firstNameMale}} {{lastName}} {{suffix}}',
-        '{{title}} {{firstNameMale}} {{lastName}} {{suffix}}',
+        '{{Faker\Dutch\NL\Person->firstNameMale}} {{Faker\Dutch\NL\Person->lastName}}',
+        '{{Faker\Dutch\NL\Person->firstNameMale}} {{Faker\Dutch\NL\Person->lastName}}',
+        '{{Faker\Dutch\NL\Person->firstNameMale}} {{Faker\Dutch\NL\Person->lastName}}',
+        '{{Faker\Dutch\NL\Person->title}} {{Faker\Dutch\NL\Person->firstNameMale}} {{Faker\Dutch\NL\Person->lastName}}',
+        '{{Faker\Dutch\NL\Person->firstNameMale}} {{Faker\Dutch\NL\Person->lastName}} {{Faker\Dutch\NL\Person->suffix}}',
+        '{{Faker\Dutch\NL\Person->title}} {{Faker\Dutch\NL\Person->firstNameMale}} {{Faker\Dutch\NL\Person->lastName}} {{Faker\Dutch\NL\Person->suffix}}',
     ];
 
     private array $femaleNameFormats = [
-        '{{firstNameFemale}} {{lastName}}',
-        '{{firstNameFemale}} {{lastName}}',
-        '{{firstNameFemale}} {{lastName}}',
-        '{{title}} {{firstNameFemale}} {{lastName}}',
-        '{{firstNameFemale}} {{lastName}} {{suffix}}',
-        '{{title}} {{firstNameFemale}} {{lastName}} {{suffix}}',
+        '{{Faker\Dutch\NL\Person->firstNameFemale}} {{Faker\Dutch\NL\Person->lastName}}',
+        '{{Faker\Dutch\NL\Person->firstNameFemale}} {{Faker\Dutch\NL\Person->lastName}}',
+        '{{Faker\Dutch\NL\Person->firstNameFemale}} {{Faker\Dutch\NL\Person->lastName}}',
+        '{{Faker\Dutch\NL\Person->title}} {{Faker\Dutch\NL\Person->firstNameFemale}} {{Faker\Dutch\NL\Person->lastName}}',
+        '{{Faker\Dutch\NL\Person->firstNameFemale}} {{Faker\Dutch\NL\Person->lastName}} {{Faker\Dutch\NL\Person->suffix}}',
+        '{{Faker\Dutch\NL\Person->title}} {{Faker\Dutch\NL\Person->firstNameFemale}} {{Faker\Dutch\NL\Person->lastName}} {{Faker\Dutch\NL\Person->suffix}}',
     ];
 
     private array $titles = [
