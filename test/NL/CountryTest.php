@@ -2,8 +2,8 @@
 
 namespace Faker\Test\Dutch\NL;
 
-use Faker\Dutch\NL\Country;
 use Faker\Dutch\Factory;
+use Faker\Dutch\NL\Country;
 use Faker\Extension\CountryExtension;
 use PHPUnit\Framework\TestCase;
 

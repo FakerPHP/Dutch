@@ -2,8 +2,8 @@
 
 namespace Faker\Test\Dutch\NL;
 
-use Faker\Dutch\NL\Address;
 use Faker\Dutch\Factory;
+use Faker\Dutch\NL\Address;
 use Faker\Extension\AddressExtension;
 use PHPUnit\Framework\TestCase;
 
@@ -59,7 +59,7 @@ final class AddressTest extends TestCase
     public function testStreetName(): void
     {
         $value = $this->extension->streetName();
-        self::assertEquals("Spring in ‘t Veldbaan", $value);
+        self::assertEquals('Spring in ‘t Veldbaan', $value);
     }
 
     public function testStreetAddress(): void

@@ -2,8 +2,8 @@
 
 namespace Faker\Test\Dutch\NL;
 
-use Faker\Dutch\NL\PhoneNumber;
 use Faker\Dutch\Factory;
+use Faker\Dutch\NL\PhoneNumber;
 use Faker\Extension\PhoneNumberExtension;
 use PHPUnit\Framework\TestCase;
 
