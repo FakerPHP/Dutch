@@ -7,7 +7,9 @@ use Faker\Extension\PhoneNumberExtension;
 
 class PhoneNumber implements PhoneNumberExtension
 {
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     protected array $formats = [
         '06 ########',
         '06-########',

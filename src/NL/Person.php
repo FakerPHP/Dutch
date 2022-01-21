@@ -88,19 +88,20 @@ final class Person implements PersonExtension, GeneratorAwareExtension
 
     /**
      * @var string[]
+     *
      * @see https://nl.wikipedia.org/wiki/Tussenvoegsel#Lijst_van_(min_of_meer)_Nederlandse_tussenvoegsels
      */
     private array $prepositions = [
         "'s", "'t", "'t",
-        "aan", "aan 't", "aan de", "aan den", "aan der", "aan het", "af", "bij",
-        "bij 't", "bij de", "bij den", "bij het", "boven 'd",
-        "d'", "de", "de die", "de die le", "de l'", "de la", "de las", "de le", "de van der", "den", "der",
-        "het",
-        "in", "in 't", "in de", "in den", "in der", "in het",
-        "onder", "onder 't", "onder de", "onder den", "onder het", "op", "op 't", "op de", "op den", "op der", "op gen", "op het", "op ten", "over", "over 't", "over de", "over den", "over het",
-        "te", "ten", "ter", "tot",
-        "uijt", "uijt 't", "uijt de", "uijt den", "uijt het", "uijt te", "uijt ten", "uit", "uit 't", "uit de", "uit den", "uit het", "uit te", "uit ten",
-        "van", "van 't", "van de", "van de l'", "van den", "van der", "van gen", "van het", "van la", "van ter", "ver", "voor", "voor de", "voor den", "voor in '",
+        'aan', "aan 't", 'aan de', 'aan den', 'aan der', 'aan het', 'af', 'bij',
+        "bij 't", 'bij de', 'bij den', 'bij het', "boven 'd",
+        "d'", 'de', 'de die', 'de die le', "de l'", 'de la', 'de las', 'de le', 'de van der', 'den', 'der',
+        'het',
+        'in', "in 't", 'in de', 'in den', 'in der', 'in het',
+        'onder', "onder 't", 'onder de', 'onder den', 'onder het', 'op', "op 't", 'op de', 'op den', 'op der', 'op gen', 'op het', 'op ten', 'over', "over 't", 'over de', 'over den', 'over het',
+        'te', 'ten', 'ter', 'tot',
+        'uijt', "uijt 't", 'uijt de', 'uijt den', 'uijt het', 'uijt te', 'uijt ten', 'uit', "uit 't", 'uit de', 'uit den', 'uit het', 'uit te', 'uit ten',
+        'van', "van 't", 'van de', "van de l'", 'van den', 'van der', 'van gen', 'van het', 'van la', 'van ter', 'ver', 'voor', 'voor de', 'voor den', "voor in '",
     ];
 
     private array $lastNames = [
@@ -270,18 +271,17 @@ final class Person implements PersonExtension, GeneratorAwareExtension
 
     /**
      * @param string|null $gender can be 'male', 'female' or null
-     * @return string
      */
     public function name(?string $gender = null): string
     {
         if ($gender === PersonExtension::GENDER_MALE) {
             $format = Helper::randomElement($this->maleNameFormats);
-        } else if ($gender === PersonExtension::GENDER_FEMALE) {
+        } elseif ($gender === PersonExtension::GENDER_FEMALE) {
             $format = Helper::randomElement($this->femaleNameFormats);
         } else {
             $format = Helper::randomElement([
-                fn() => Helper::randomElement($this->maleNameFormats),
-                fn() => Helper::randomElement($this->femaleNameFormats),
+                fn () => Helper::randomElement($this->maleNameFormats),
+                fn () => Helper::randomElement($this->femaleNameFormats),
             ])();
         }
 
@@ -299,8 +299,8 @@ final class Person implements PersonExtension, GeneratorAwareExtension
         }
 
         return Helper::randomElement([
-            fn() => $this->firstNameMale(),
-            fn() => $this->firstNameFemale(),
+            fn () => $this->firstNameMale(),
+            fn () => $this->firstNameFemale(),
         ])();
     }
 
@@ -321,9 +321,13 @@ final class Person implements PersonExtension, GeneratorAwareExtension
 
         if ($i === 0) {
             return Helper::randomElement($this->longLastNames);
-        } else if ($i <= 2) {
+        }
+
+        if ($i <= 2) {
             return Helper::randomElement($this->foreignLastNames);
-        } else if ($i <= 6) {
+        }
+
+        if ($i <= 6) {
             return Helper::randomElement($this->commonLastNames);
         }
 
@@ -359,8 +363,6 @@ final class Person implements PersonExtension, GeneratorAwareExtension
      * Generate a Dutch "Burgerservicenummer"
      *
      * @see https://nl.wikipedia.org/wiki/Burgerservicenummer#11-proef
-     *
-     * @return string
      */
     public function idNumber(): string
     {

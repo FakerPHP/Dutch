@@ -10,14 +10,14 @@ use Faker\Provider\Miscellaneous;
 
 final class Company implements CompanyExtension, GeneratorAwareExtension
 {
-
     use GeneratorAwareExtensionTrait;
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     protected array $companySuffixes = [
         'VOF', 'CV', 'LLP', 'BV', 'NV', 'IBC', 'CSL', 'EESV', 'SE', 'CV', 'Stichting', '& Zonen', '& Zn',
     ];
-
 
     protected array $products = [
         'Keuken', 'Media', 'Meubel', 'Sanitair', 'Elektronica', 'Schoenen',
@@ -42,6 +42,7 @@ final class Company implements CompanyExtension, GeneratorAwareExtension
 
     /**
      * @var string[]
+     *
      * @see https://nl.wikipedia.org/wiki/Lijst_van_beroepen
      */
     protected array $jobTitleNames = [
@@ -76,13 +77,13 @@ final class Company implements CompanyExtension, GeneratorAwareExtension
     public function company(): string
     {
         $name = Helper::randomElement([
-            fn() => sprintf("%s %s", Helper::randomElement($this->stores), $this->generator->lastName()),
-            fn() => sprintf("%s%s", Helper::randomElement($this->products), strtolower(Helper::randomElement($this->types))),
-            fn() => sprintf("%s %s", Helper::randomElement($this->products), Helper::randomElement($this->types)),
+            fn () => sprintf('%s %s', Helper::randomElement($this->stores), $this->generator->lastName()),
+            fn () => sprintf('%s%s', Helper::randomElement($this->products), strtolower(Helper::randomElement($this->types))),
+            fn () => sprintf('%s %s', Helper::randomElement($this->products), Helper::randomElement($this->types)),
         ])();
 
         if (Miscellaneous::boolean(25)) {
-            return sprintf("%s %s", $name, Helper::randomElement($this->companySuffixes));
+            return sprintf('%s %s', $name, Helper::randomElement($this->companySuffixes));
         }
 
         return $name;
