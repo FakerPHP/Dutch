@@ -105,7 +105,7 @@ final class Person implements PersonExtension, GeneratorAwareExtension
     {
         if ($gender === PersonExtension::GENDER_MALE) {
             $format = $this->generator->parse($this->maleNameFormat);
-        } elseif ($gender === static::GENDER_FEMALE) {
+        } elseif ($gender === PersonExtension::GENDER_FEMALE) {
             $format = $this->generator->parse($this->femaleNameFormat);
         } else {
             $format = Helper::randomElement([

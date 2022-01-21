@@ -11,10 +11,14 @@ final class Address implements AddressExtension, GeneratorAwareExtension
 {
     use GeneratorAwareExtensionTrait;
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $buildingNumberFormats = ['%', '%#', '%##', '%###', '%-?', '%#-?', '%?', '%#?', '%-#', '%#-##'];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $postcodes = [
         '1013PT', '1015GZ', '1053GS', '1058EG', '1060PM', '1068NE', '1072NL', '1073SK', '1074JA', '1078NH', '1111LW',
         '1121JC', '1141RP', '1141VM', '1161TC', '1183CH', '1187RK', '1188LP', '1271KZ', '1312SG', '1323CW', '1325EZ',
@@ -53,21 +57,31 @@ final class Address implements AddressExtension, GeneratorAwareExtension
         '9712LJ', '9742GT', '9745EH', '9751TA', '9751TS', '9752BK', '9752GE', '9801TA', '9901EH', '9991EG', '9999XK',
     ];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $streetNameFormats = ['{{Faker\Dutch\NL\Person->lastName}}{{Faker\Dutch\NL\Address->streetSuffix}}'];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $streetAddressFormats = ['{{Faker\Dutch\NL\Address->streetName}} {{Faker\Dutch\NL\Address->buildingNumber}}'];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $cityFormats = ['{{cityName}}'];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $addressFormats = [
         "{{Faker\Dutch\NL\Address->streetAddress}}\n{{Faker\Dutch\NL\Address->postcode}} {{Faker\Dutch\NL\Address->city}}",
     ];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $streetSuffixes = [
         'baan', 'boulevard', 'dreef', 'hof', 'laan', 'pad', 'ring', 'singel', 'steeg', 'straat', 'weg',
     ];
@@ -105,7 +119,9 @@ final class Address implements AddressExtension, GeneratorAwareExtension
         'Zaamslag', 'Zaandam', 'Zaandijk', 'Zalk', 'Zaltbommel', 'Zandberg', 'Zandeweer', 'Zandhuizen', 'Zandpol', 'Zandvoort', 'Zeddam', 'Zeegse', 'Zeeland', 'Zeerijp', 'Zeewolde', 'Zegge', 'Zegveld', 'Zeijen', 'Zeijerveen', 'Zeijerveld', 'Zeist', 'Zelhem', 'Zenderen', 'Zennewijnen', 'Zennewijnen', 'Zetten', 'Zevenaar', 'Zevenbergen', 'Zevenbergschen Hoek', 'Zevenbergschen Hoek', 'Zevenhoven', 'Zevenhuizen', 'Zevenhuizen', 'Zierikzee', 'Zieuwent', 'Zijderveld', 'Zijdewind', 'Zijldijk', 'Zoelen', 'Zoelmond', 'Zoetermeer', 'Zoeterwoude', 'Zonnemaire', 'Zorgvlied', 'Zoutelande', 'Zoutkamp', 'Zuid-Beijerland', 'Zuid-Scharwoude', 'Zuidbroek', 'Zuiddorpe', 'Zuidermeer', 'Zuiderwoude', 'Zuidhorn', 'Zuidlaarderveen', 'Zuidland', 'Zuidlaren', 'Zuidoostbeemster', 'Zuidschermer', 'Zuidveen', 'Zuidveld', 'Zuidvelde', 'Zuidwolde', 'Zuidwolde', 'Zuidzande', 'Zuilichem', 'Zuna', 'Zundert', 'Zurich', 'Zutphen', 'Zuurdijk', 'Zwaag', 'Zwaagdijk-Oost', 'Zwaagdijk-West', 'Zwaanshoek', 'Zwagerbosch', 'Zwammerdam', 'Zwanenburg', 'Zwartebroek', 'Zwartemeer', 'Zwartewaal', 'Zwartsluis', 'Zweeloo', 'Zweins', 'Zwiggelte', 'Zwijndrecht', 'Zwinderen', 'Zwolle', 'de Hoef', 'de Lutte', 'de Wijk', 'de Woude',
     ];
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $states = [
         'Drenthe', 'Gelderland', 'Groningen', 'Flevoland', 'Friesland', 'Noord-Brabant', 'Noord-Holland', 'Overijssel', 'Limburg', 'Utrecht', 'Zeeland', 'Zuid-Holland',
     ];

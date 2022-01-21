@@ -2,12 +2,18 @@
 
 namespace Faker\Dutch\NL;
 
+use Faker\Extension\GeneratorAwareExtension;
+use Faker\Extension\GeneratorAwareExtensionTrait;
 use Faker\Extension\Helper;
 use Faker\Extension\PhoneNumberExtension;
 
-class PhoneNumber implements PhoneNumberExtension
+class PhoneNumber implements PhoneNumberExtension, GeneratorAwareExtension
 {
-    /** @var string[] */
+    use GeneratorAwareExtensionTrait;
+
+    /**
+     * @var string[]
+     */
     protected array $formats = [
         '06 ########',
         '06-########',

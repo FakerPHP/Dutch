@@ -1,9 +1,9 @@
 <?php
 
-namespace Faker\Test\Dutch\BE;
+namespace Faker\Test\Dutch\NL;
 
-use Faker\Dutch\BE\Person;
 use Faker\Dutch\Factory;
+use Faker\Dutch\NL\Person;
 use Faker\Extension\PersonExtension;
 use PHPUnit\Framework\TestCase;
 
@@ -13,7 +13,7 @@ final class PersonTest extends TestCase
 
     protected function setUp(): void
     {
-        $faker = Factory::belgium();
+        $faker = Factory::netherlands();
         $faker->seed(1);
         $this->extension = $faker->ext(PersonExtension::class);
         parent::setUp();
@@ -22,78 +22,72 @@ final class PersonTest extends TestCase
     public function testName(): void
     {
         $value = $this->extension->name();
-        self::assertEquals('Kaat Borremans', $value);
+        self::assertEquals('Kiki Maas', $value);
 
         $valueMale = $this->extension->name(PersonExtension::GENDER_MALE);
-        self::assertEquals('Yanis Coppens', $valueMale);
+        self::assertEquals('bacc. Samuel Korsman PhD', $valueMale);
 
         $valueFemale = $this->extension->name(PersonExtension::GENDER_FEMALE);
-        self::assertEquals('Ella Rousseau', $valueFemale);
+        self::assertEquals('bacc. Fiene Westermann MPhil', $valueFemale);
     }
 
     public function testFirstName(): void
     {
         $value = $this->extension->firstName();
-        self::assertEquals('Kaat', $value);
+        self::assertEquals('Johanna', $value);
 
         $valueMale = $this->extension->firstName(PersonExtension::GENDER_MALE);
-        self::assertEquals('Jonas', $valueMale);
+        self::assertEquals('Morris', $valueMale);
 
         $valueFemale = $this->extension->firstName(PersonExtension::GENDER_FEMALE);
-        self::assertEquals('Margaux', $valueFemale);
+        self::assertEquals('Amina', $valueFemale);
     }
 
     public function testFirstNameMale(): void
     {
         $valueMale = $this->extension->firstName(PersonExtension::GENDER_MALE);
-        self::assertEquals('Guillaume', $valueMale);
+        self::assertEquals('Wouter', $valueMale);
     }
 
     public function testFirstNameFemale(): void
     {
         $valueMale = $this->extension->firstName(PersonExtension::GENDER_FEMALE);
-        self::assertEquals('Julie', $valueMale);
+        self::assertEquals('Jennifer', $valueMale);
     }
 
     public function testLastName(): void
     {
         $value = $this->extension->lastName();
-        self::assertEquals('Georges', $value);
+        self::assertEquals('van Gent', $value);
     }
 
     public function testTitle(): void
     {
         $value = $this->extension->title();
-        self::assertEquals('Miss', $value);
+        self::assertEquals('mr.', $value);
 
         $valueMale = $this->extension->title(PersonExtension::GENDER_MALE);
-        self::assertEquals('Mr.', $valueMale);
+        self::assertEquals('ir.', $valueMale);
 
         $valueFemale = $this->extension->title(PersonExtension::GENDER_FEMALE);
-        self::assertEquals('Dr.', $valueFemale);
+        self::assertEquals('kand.', $valueFemale);
     }
 
     public function testTitleMale(): void
     {
         $valueMale = $this->extension->titleMale();
-        self::assertEquals('Mr.', $valueMale);
+        self::assertEquals('mr.', $valueMale);
     }
 
     public function testTitleFemale(): void
     {
         $valueMale = $this->extension->titleFemale();
-        self::assertEquals('Mrs.', $valueMale);
+        self::assertEquals('mr.', $valueMale);
     }
 
     public function testRrn(): void
     {
-        $value = $this->extension->rrn();
-        self::assertEquals('22100657865', $value);
-
-        $valueMale = $this->extension->rrn(PersonExtension::GENDER_MALE);
-        self::assertEquals('15042471997', $valueMale);
-
-        $valueFemale = $this->extension->rrn(PersonExtension::GENDER_FEMALE);
-        self::assertEquals('08112999261', $valueFemale);
+        $value = $this->extension->idNumber();
+        self::assertEquals('678997056', $value);
     }
 }
